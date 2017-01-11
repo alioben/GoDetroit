@@ -1,0 +1,23 @@
+Publish Alerts:
+	type = POST
+	endpoint+"sendAlerts"
+	params: lat, lon, text
+	returns a 200 response in header
+
+Request Alerts:
+	type = GET
+	endpoint+"getAlerts"
+	params: lat, lon
+	returns a list of alerts
+
+Rate "UP" an alert:
+	type GET
+	endpoint+"up"
+	params: id
+	returns the new count for "ups"
+
+Rate "DOWN" an alert
+	type GET
+	endpoint+"down"
+	params: id
+	returns the new count for "downs"
