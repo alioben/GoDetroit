@@ -7,7 +7,7 @@ from haversine import haversine
 def float_formatter(X):
     return "%.6f" % X
 
-centroids = np.loadtxt(fname='centroids_5.txt', delimiter=',')
+centroids = np.loadtxt(fname='centroids.txt', delimiter=',')
 np.set_printoptions(formatter={'float_kind': float_formatter})
 distance_matrix = pdist(centroids, metric=haversine)
 # print 'distance_matrix is: ', distance_matrix.shape
