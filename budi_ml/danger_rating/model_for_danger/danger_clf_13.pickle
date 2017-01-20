@@ -57,7 +57,7 @@ I-1
 I0
 tp24
 bI00
-S"\xde\x13\x96n\x85'|:"
+S'(\xb2%A\x1a\xfc\x88:'
 p25
 tp26
 bsS'singular_'
@@ -74,7 +74,7 @@ Rp30
 tp31
 g22
 I00
-S'\x0b\xdf\xe5\x01\xa6\xbc9@'
+S'\xcc\xa68\xa0\r\\9@'
 p32
 tp33
 bsS'coef_'
@@ -92,7 +92,7 @@ L1L
 tp38
 g22
 I00
-S':\x8e\x01P\xb8\xea\r\xc0'
+S'e\xc9X\x08\x9b\x8c\x04\xc0'
 p39
 tp40
 bsS'_sklearn_version'
