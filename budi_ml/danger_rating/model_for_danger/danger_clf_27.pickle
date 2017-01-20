@@ -57,7 +57,7 @@ I-1
 I0
 tp24
 bI00
-S'XHtxG\xbbo:'
+S'|\xc4\xff\xd6\xff\xb3b:'
 p25
 tp26
 bsS'singular_'
@@ -74,7 +74,7 @@ Rp30
 tp31
 g22
 I00
-S'\xe1I\x12~\xa1j9@'
+S'p\x7f\xdc\xbc\x8189@'
 p32
 tp33
 bsS'coef_'
@@ -92,7 +92,7 @@ L1L
 tp38
 g22
 I00
-S'c@\xabk\xd7z\xfd\xbf'
+S'3\x94q!\xe7O\t\xc0'
 p39
 tp40
 bsS'_sklearn_version'
@@ -116,7 +116,7 @@ Rp47
 tp48
 g22
 I00
-S'\xff\xff\xff\xff\xff\xff#@'
+S'\x00\x00\x00\x00\x00\x00$@'
 p49
 tp50
 bsba.

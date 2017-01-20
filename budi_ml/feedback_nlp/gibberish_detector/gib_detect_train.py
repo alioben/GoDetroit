@@ -55,7 +55,7 @@ def train():
     # And pick a threshold halfway between the worst good and best bad inputs.
     thresh = (min(good_probs) + max(bad_probs)) / 2
     with open('gib_model.pickle', 'wb')as f:
-        pickle.dump({'mat': counts, 'thresh': thresh}, f)
+        pickle.dump([{'mat': counts, 'thresh': thresh}], f)
 
 def avg_transition_prob(l, log_prob_mat):
     """ Return the average transition prob from l through log_prob_mat. """

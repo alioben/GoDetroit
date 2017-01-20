@@ -75,7 +75,7 @@ cartesian = convert_long_lat_to_cartesian(dt_trans[:, 0], dt_trans[:, 1])
 
 clf = None
 try:
-    with open('clf_data.pickle', 'rb') as f:
+    with open('danger_model.pickle', 'rb') as f:
         print 'clf is already there, just load it...'
         clf = pickle.load(f)[0]
 except:
@@ -84,7 +84,7 @@ except:
 if not clf:
     print 'Training right now with: ', cartesian.shape[0], 'rows...'
     clf = KMeans(n_clusters=K).fit(cartesian)
-    with open('clf_data.pickle', 'wb') as f:
+    with open('danger_model.pickle', 'wb') as f:
         pickle.dump([clf], f)
 
 print 'Finished training, predicting...'
