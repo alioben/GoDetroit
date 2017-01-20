@@ -25,7 +25,7 @@ y = np.array(report_df['CATEGORY'])
 Gibberish Classifier
 '''
 # Pickle no 1: gibberish classifier
-with open('gibberish_detector/gib_model.pickle', 'rb') as f:
+with open('gib_model.pickle', 'rb') as f:
     gibberish_clf = pickle.load(f)[0]
 gibberish_threshold = gibberish_clf['thresh']
 
