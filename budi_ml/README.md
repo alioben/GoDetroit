@@ -5,7 +5,7 @@
 2. Rate whether a report from a citizen is **IMPORTANT** or **NOT IMPORTANT**
 
 ### Getting started
-Getting the danger rating system to work:
+#### Getting the danger rating system to work:
 1. Clone the project
 2. `cd GoDetroit`
 3. `cd budi_ml`
@@ -13,7 +13,8 @@ Getting the danger rating system to work:
 5. `python model.py`
 6. `python main.py`
 7. Have fun playing with danger rating system!
-Getting the feedback system to work:
+
+#### Getting the feedback system to work:
 1. Clone the project
 2. `cd GoDetroit`
 3. `cd budi_ml`
