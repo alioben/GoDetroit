@@ -1,5 +1,6 @@
 import nltk
 import string
+import sys
 import pandas as pd
 import numpy as np
 from gibberish_detector import gib_detect_train
@@ -50,13 +51,13 @@ def normalize(text):
 tfidf_vectorizer = None
 try:
     with open('tfidf_vectorizer.pickle', 'rb') as f:
-        print 'tfidf_vectorizer is already there, just load it...'
+        #print 'tfidf_vectorizer is already there, just load it...'
         clf = pickle.load(f)[0]
 except:
     pass
 
 if not tfidf_vectorizer:
-    print 'Fitting right now using the training dataset: '
+    ##print 'Fitting right now using the training dataset: '
     tfidf_vectorizer = TfidfVectorizer(tokenizer=normalize, stop_words='english')
     with open('tfidf_vectorizer.pickle', 'wb') as f:
         pickle.dump([tfidf_vectorizer], f)
@@ -67,33 +68,30 @@ X = tfidf_vectorizer.fit_transform(X)
 nb_clf = None
 try:
     with open('nb_clf.pickle', 'rb') as f:
-        print 'nb_clf, just load it...'
+        #print 'nb_clf, just load it...'
         clf = pickle.load(f)[0]
 except:
     pass
 
 if not nb_clf:
-    print 'Training NB classifier using the trained tfidf_vectorizer '
+    #print 'Training NB classifier using the trained tfidf_vectorizer '
     nb_clf = MultinomialNB().fit(X, y)
     with open('nb_clf.pickle', 'wb') as f:
         pickle.dump([nb_clf], f)
 
 
-print 'The training is done.. Time to have some FUN'
+#print 'The training is done.. Time to have some FUN'
 
-# Ali, just see this section on how to use the models
-while True:
-    print 'Please input an example report by a citizen'
-    string = raw_input()
-    # First pipeline
-    gibberish = determine_gibberish(string)
-    print 'gibberish? ', gibberish
-    if not gibberish:
-        # Second pipeline
-        string = [str(string)]
-        string = tfidf_vectorizer.transform(np.array(string))
-        result = nb_clf.predict(string)
-    else:
-        result = [0]
-    result = 'IMPORTANT' if result[0] == 1 else 'NOT IMPORTANT'
-    print 'According to our predictive algorithm, this report is ', result
+#print 'Please input an example report by a citizen'
+string = sys.argv[1]
+# First pipeline
+gibberish = determine_gibberish(string)
+#print 'gibberish? ', gibberish
+if not gibberish:
+    # Second pipeline
+    string = [str(string)]
+    string = tfidf_vectorizer.transform(np.array(string))
+    result = nb_clf.predict_proba(string)
+    print result[0][1]
+else:
+    print 0
