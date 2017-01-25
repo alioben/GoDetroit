@@ -38,11 +38,15 @@ def determine_gibberish(sentence):
 '''
 Naive Bayes Classifier
 '''
-# these 2 functions remove punctuation, lowercase, stem. They are used by the NB
+# these 2 functions remove punctuation, lowercase, stem. They are used by
+# the NB
 stemmer = nltk.stem.porter.PorterStemmer()
 remove_punctuation_map = dict((ord(char), None) for char in string.punctuation)
+
+
 def stem_tokens(tokens):
     return [stemmer.stem(item) for item in tokens]
+
 
 def normalize(text):
     return stem_tokens(nltk.word_tokenize(text.lower().translate(remove_punctuation_map)))
@@ -51,14 +55,15 @@ def normalize(text):
 tfidf_vectorizer = None
 try:
     with open('tfidf_vectorizer.pickle', 'rb') as f:
-        #print 'tfidf_vectorizer is already there, just load it...'
+        # print 'tfidf_vectorizer is already there, just load it...'
         clf = pickle.load(f)[0]
 except:
     pass
 
 if not tfidf_vectorizer:
-    ##print 'Fitting right now using the training dataset: '
-    tfidf_vectorizer = TfidfVectorizer(tokenizer=normalize, stop_words='english')
+    # print 'Fitting right now using the training dataset: '
+    tfidf_vectorizer = TfidfVectorizer(
+        tokenizer=normalize, stop_words='english')
     with open('tfidf_vectorizer.pickle', 'wb') as f:
         pickle.dump([tfidf_vectorizer], f)
 
@@ -68,30 +73,31 @@ X = tfidf_vectorizer.fit_transform(X)
 nb_clf = None
 try:
     with open('nb_clf.pickle', 'rb') as f:
-        #print 'nb_clf, just load it...'
+        # print 'nb_clf, just load it...'
         clf = pickle.load(f)[0]
 except:
     pass
 
 if not nb_clf:
-    #print 'Training NB classifier using the trained tfidf_vectorizer '
+    # print 'Training NB classifier using the trained tfidf_vectorizer '
     nb_clf = MultinomialNB().fit(X, y)
     with open('nb_clf.pickle', 'wb') as f:
         pickle.dump([nb_clf], f)
 
 
-#print 'The training is done.. Time to have some FUN'
+# print 'The training is done.. Time to have some FUN'
 
-#print 'Please input an example report by a citizen'
+# print 'Please input an example report by a citizen'
 string = sys.argv[1]
 # First pipeline
 gibberish = determine_gibberish(string)
-#print 'gibberish? ', gibberish
+# print 'gibberish? ', gibberish
 if not gibberish:
     # Second pipeline
     string = [str(string)]
     string = tfidf_vectorizer.transform(np.array(string))
     result = nb_clf.predict_proba(string)
-    print result[0][1]
+    toPrint = result[0][1]
+    print("", toPrint)
 else:
     print 0
