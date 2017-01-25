@@ -22,5 +22,5 @@
 5. `cd gibberish_detector`
 6. `python gib_detect_train.py`
 7. `cd ..`
-8. `python main.py`
-9. Have fun playing with the feedback system!
+8. `python main.py "[SAMPLE REPORT HERE]"`
+9. This will output the probability of a report being serious or not (from 0 to 1)
