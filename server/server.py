@@ -1,11 +1,18 @@
 import json
 import logging
-from subprocess import Popen, PIPE
+
 from datetime import datetime
+from subprocess import PIPE
+from subprocess import Popen
 
 import requests
 
-from flask import Flask, Response, jsonify, redirect, request, url_for
+from flask import Flask
+from flask import Response
+from flask import jsonify
+from flask import redirect
+from flask import request
+from flask import url_for
 from flask_login import *
 from pymongo import MongoClient
 
