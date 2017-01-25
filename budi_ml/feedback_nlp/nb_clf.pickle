@@ -26,7 +26,7 @@ p11
 tp12
 Rp13
 (I1
-(I2
+(L2L
 tp14
 cnumpy
 dtype
@@ -58,13 +58,8 @@ g11
 tp25
 Rp26
 (I1
-<<<<<<< HEAD
-(I2
-I1453
-=======
 (L2L
 L1474L
->>>>>>> 7cabffa1405fbd151576c58d79a1fb71495846a8
 tp27
 g18
 I00
@@ -81,7 +76,7 @@ g11
 tp32
 Rp33
 (I1
-(I2
+(L2L
 tp34
 g15
 (S'i8'
@@ -109,7 +104,7 @@ p43
 F1.0
 sS'_sklearn_version'
 p44
-S'0.18.1'
+S'0.18'
 p45
 sS'class_prior'
 p46
@@ -123,7 +118,7 @@ g11
 tp49
 Rp50
 (I1
-(I2
+(L2L
 tp51
 g18
 I00
@@ -140,13 +135,8 @@ g11
 tp56
 Rp57
 (I1
-<<<<<<< HEAD
-(I2
-I1453
-=======
 (L2L
 L1474L
->>>>>>> 7cabffa1405fbd151576c58d79a1fb71495846a8
 tp58
 g18
 I00
