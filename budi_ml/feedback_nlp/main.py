@@ -17,7 +17,7 @@ DETECT GIBBERISH(SOME RANDOM SOUND) ----> USE NAIVE BAYES CLASSIFIER
 '''
 READ FILE, TRANSFORM TRAINING DATA INTO TF-IDF
 '''
-report_df = pd.read_csv('data/final_training_set.csv')
+report_df = pd.read_csv('../budi_ml/feedback_nlp/data/final_training_set.csv')
 X = np.array(report_df['REPORT'])
 y = np.array(report_df['CATEGORY'])
 
@@ -26,7 +26,7 @@ y = np.array(report_df['CATEGORY'])
 Gibberish Classifier
 '''
 # Pickle no 1: gibberish classifier
-with open('gib_model.pickle', 'rb') as f:
+with open('../budi_ml/feedback_nlp/gib_model.pickle', 'rb') as f:
     gibberish_clf = pickle.load(f)[0]
 gibberish_threshold = gibberish_clf['thresh']
 
@@ -64,7 +64,7 @@ if not tfidf_vectorizer:
     # print 'Fitting right now using the training dataset: '
     tfidf_vectorizer = TfidfVectorizer(
         tokenizer=normalize, stop_words='english')
-    with open('tfidf_vectorizer.pickle', 'wb') as f:
+    with open('../budi_ml/feedback_nlp/tfidf_vectorizer.pickle', 'wb') as f:
         pickle.dump([tfidf_vectorizer], f)
 
 X = tfidf_vectorizer.fit_transform(X)
@@ -72,7 +72,7 @@ X = tfidf_vectorizer.fit_transform(X)
 # Pickle no 3: Naive Bayes Classifier
 nb_clf = None
 try:
-    with open('nb_clf.pickle', 'rb') as f:
+    with open('../budi_ml/feedback_nlp/nb_clf.pickle', 'rb') as f:
         # print 'nb_clf, just load it...'
         clf = pickle.load(f)[0]
 except:
@@ -81,7 +81,7 @@ except:
 if not nb_clf:
     # print 'Training NB classifier using the trained tfidf_vectorizer '
     nb_clf = MultinomialNB().fit(X, y)
-    with open('nb_clf.pickle', 'wb') as f:
+    with open('../budi_ml/feedback_nlp/nb_clf.pickle', 'wb') as f:
         pickle.dump([nb_clf], f)
 
 
@@ -97,7 +97,6 @@ if not gibberish:
     string = [str(string)]
     string = tfidf_vectorizer.transform(np.array(string))
     result = nb_clf.predict_proba(string)
-    toPrint = result[0][1]
-    print("", toPrint)
+    print result[0][1]
 else:
     print 0

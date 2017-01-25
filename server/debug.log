@@ -1,0 +1,55 @@
+INFO:root:Began running at 2017-01-25 05:18:21.836766
+INFO:root: 
+INFO:root:Began running at 2017-01-25 05:18:24.548369
+INFO:root: 
+INFO:werkzeug: * Running on http://0.0.0.0:80/ (Press CTRL+C to quit)
+INFO:root:Began running at 2017-01-25 05:19:59.091131
+INFO:root: 
+INFO:werkzeug: * Running on http://0.0.0.0:80/ (Press CTRL+C to quit)
+INFO:root:Began running at 2017-01-25 05:21:40.724001
+INFO:root: 
+INFO:werkzeug: * Running on http://0.0.0.0:80/ (Press CTRL+C to quit)
+INFO:werkzeug:128.61.70.131 - - [25/Jan/2017 05:21:43] "POST /api/feedback HTTP/1.1" 500 -
+INFO:werkzeug:128.61.70.131 - - [25/Jan/2017 05:22:24] "GET / HTTP/1.1" 404 -
+INFO:werkzeug:128.61.70.131 - - [25/Jan/2017 05:22:52] "POST /api/feedback HTTP/1.1" 500 -
+INFO:root:Began running at 2017-01-25 05:23:18.315217
+INFO:root: 
+INFO:werkzeug: * Running on http://0.0.0.0:80/ (Press CTRL+C to quit)
+INFO:werkzeug:128.61.70.131 - - [25/Jan/2017 05:23:23] "POST /api/feedback HTTP/1.1" 500 -
+INFO:root:Began running at 2017-01-25 05:23:44.078055
+INFO:root: 
+INFO:werkzeug: * Running on http://0.0.0.0:80/ (Press CTRL+C to quit)
+INFO:werkzeug:128.61.70.131 - - [25/Jan/2017 05:23:49] "POST /api/feedback HTTP/1.1" 500 -
+INFO:root:Began running at 2017-01-25 05:24:25.891048
+INFO:root: 
+INFO:werkzeug: * Running on http://0.0.0.0:80/ (Press CTRL+C to quit)
+INFO:werkzeug:128.61.70.131 - - [25/Jan/2017 05:24:29] "POST /api/feedback HTTP/1.1" 200 -
+INFO:root:Began running at 2017-01-25 05:25:08.536829
+INFO:root: 
+INFO:werkzeug: * Running on http://0.0.0.0:80/ (Press CTRL+C to quit)
+INFO:root:(b'', b'  File "../budi_ml/feedback_nlp/main.py", line 95\n    print result[0][1]\n               ^\nSyntaxError: Missing parentheses in call to \'print\'\n')
+INFO:werkzeug:128.61.70.131 - - [25/Jan/2017 05:25:11] "POST /api/feedback HTTP/1.1" 200 -
+INFO:root:Began running at 2017-01-25 05:26:30.684702
+INFO:root: 
+INFO:werkzeug: * Running on http://0.0.0.0:80/ (Press CTRL+C to quit)
+INFO:root:(b'', b'  File "../budi_ml/feedback_nlp/main.py", line 95\n    print result[0][1]\n               ^\nSyntaxError: Missing parentheses in call to \'print\'\n')
+INFO:werkzeug:128.61.70.131 - - [25/Jan/2017 05:26:33] "POST /api/feedback HTTP/1.1" 200 -
+INFO:root:(b'', b'  File "../budi_ml/feedback_nlp/main.py", line 95\n    print result[0][1]\n               ^\nSyntaxError: Missing parentheses in call to \'print\'\n')
+INFO:werkzeug:128.61.70.131 - - [25/Jan/2017 05:26:47] "POST /api/feedback HTTP/1.1" 200 -
+INFO:root:Began running at 2017-01-25 05:27:48.574191
+INFO:root: 
+INFO:werkzeug: * Running on http://0.0.0.0:80/ (Press CTRL+C to quit)
+INFO:root:(b'', b'  File "../budi_ml/feedback_nlp/main.py", line 95\n    print result[0][1]\n               ^\nSyntaxError: Missing parentheses in call to \'print\'\n')
+INFO:werkzeug:128.61.70.131 - - [25/Jan/2017 05:27:51] "POST /api/feedback HTTP/1.1" 200 -
+INFO:root:Began running at 2017-01-25 05:28:07.759900
+INFO:root: 
+INFO:werkzeug: * Running on http://0.0.0.0:80/ (Press CTRL+C to quit)
+INFO:root:(b'', b'  File "../budi_ml/feedback_nlp/main.py", line 101\n    print toPrint\n                ^\nSyntaxError: Missing parentheses in call to \'print\'\n')
+INFO:werkzeug:128.61.70.131 - - [25/Jan/2017 05:28:10] "POST /api/feedback HTTP/1.1" 200 -
+INFO:root:Began running at 2017-01-25 05:30:04.705987
+INFO:root: 
+INFO:werkzeug: * Running on http://0.0.0.0:80/ (Press CTRL+C to quit)
+INFO:root:(b'', b'  File "../budi_ml/feedback_nlp/main.py", line 103\n    print 0\n          ^\nSyntaxError: Missing parentheses in call to \'print\'\n')
+INFO:werkzeug:128.61.70.131 - - [25/Jan/2017 05:30:08] "POST /api/feedback HTTP/1.1" 200 -
+INFO:werkzeug:69.63.188.206 - - [25/Jan/2017 05:34:54] "GET / HTTP/1.1" 404 -
+INFO:werkzeug:173.252.79.112 - - [25/Jan/2017 05:34:55] "GET / HTTP/1.1" 404 -

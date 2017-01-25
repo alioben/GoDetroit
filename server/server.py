@@ -36,7 +36,7 @@ def get_feedback():
 
 def feedback(query):
     p = Popen(
-        ['python3', '../budi_ml/feedback_nlp/main.py', query], stdout=PIPE, stderr=PIPE)
+        ['python2', '../budi_ml/feedback_nlp/main.py', query], stdout=PIPE, stderr=PIPE)
     output = p.communicate()
     logging.info(output)
     return output
