@@ -54,7 +54,6 @@ def train():
 
     # And pick a threshold halfway between the worst good and best bad inputs.
     thresh = (min(good_probs) + max(bad_probs)) / 2
-    print 'thresh is: ', thresh
     with open('../gib_model.pickle', 'wb') as f:
 
         pickle.dump([{'mat': counts, 'thresh': thresh}], f)
