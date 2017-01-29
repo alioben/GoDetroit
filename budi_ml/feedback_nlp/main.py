@@ -1,8 +1,8 @@
-import string
 import nltk
-import sys
+import string
 import pandas as pd
 import numpy as np
+import sys
 from gibberish_detector import gib_detect_train
 import pickle
 from sklearn.feature_extraction.text import TfidfVectorizer
@@ -13,22 +13,6 @@ FEEDBACK ALGORITHM PIPELINE:
 
 DETECT GIBBERISH(SOME RANDOM SOUND) ----> USE NAIVE BAYES CLASSIFIER
 '''
-
-'''
-READ FILE, TRANSFORM TRAINING DATA INTO TF-IDF
-'''
-report_df = pd.read_csv('../budi_ml/feedback_nlp/data/final_training_set.csv')
-X = np.array(report_df['REPORT'])
-y = np.array(report_df['CATEGORY'])
-
-
-'''
-Gibberish Classifier
-'''
-# Pickle no 1: gibberish classifier
-with open('../budi_ml/feedback_nlp/gib_model.pickle', 'rb') as f:
-    gibberish_clf = pickle.load(f)[0]
-gibberish_threshold = gibberish_clf['thresh']
 
 
 def determine_gibberish(sentence):
@@ -46,10 +30,7 @@ def determine_gibberish(sentence):
 Naive Bayes Classifier
 '''
 # these 2 functions remove punctuation, lowercase, stem. They are used by
-# the NB
-stemmer = nltk.stem.porter.PorterStemmer()
-remove_punctuation_map = dict((ord(char), None) for char in string.punctuation)
-
+# the NB classifier
 
 def stem_tokens(tokens):
     stemmer = nltk.stem.porter.PorterStemmer()
@@ -57,82 +38,30 @@ def stem_tokens(tokens):
 
 
 def normalize(text):
-    remove_punctuation_map = dict((ord(char), None)
-                                  for char in string.punctuation)
+    remove_punctuation_map = dict((ord(char), None) for char in string.punctuation)
     return stem_tokens(nltk.word_tokenize(text.lower().translate(remove_punctuation_map)))
-
-# Pickle no 2: tfidf_vectorizer
-tfidf_vectorizer = None
-try:
-    with open('../budi_ml/feedback_nlp/tfidf_vectorizer.pickle', 'rb') as f:
-        # print 'tfidf_vectorizer is already there, just load it...'
-        clf = pickle.load(f)[0]
-except:
-    pass
-
-if not tfidf_vectorizer:
-    # print 'Fitting right now using the training dataset: '
-    tfidf_vectorizer = TfidfVectorizer(
-        tokenizer=normalize, stop_words='english')
-    with open('../budi_ml/feedback_nlp/tfidf_vectorizer.pickle', 'wb') as f:
-        pickle.dump([tfidf_vectorizer], f)
-
-X = tfidf_vectorizer.fit_transform(X)
-
-# Pickle no 3: Naive Bayes Classifier
-nb_clf = None
-try:
-    with open('../budi_ml/feedback_nlp/nb_clf.pickle', 'rb') as f:
-        # print 'nb_clf, just load it...'
-        clf = pickle.load(f)[0]
-except:
-    pass
-
-if not nb_clf:
-    # print 'Training NB classifier using the trained tfidf_vectorizer '
-    nb_clf = MultinomialNB().fit(X, y)
-    with open('../budi_ml/feedback_nlp/nb_clf.pickle', 'wb') as f:
-        pickle.dump([nb_clf], f)
-
-
-# print 'The training is done.. Time to have some FUN'
-
-# print 'Please input an example report by a citizen'
-string = sys.argv[1]
-# First pipeline
-gibberish = determine_gibberish(string)
-# print 'gibberish? ', gibberish
-if not gibberish:
-    # Second pipeline
-    string = [str(string)]
-    string = tfidf_vectorizer.transform(np.array(string))
-    result = nb_clf.predict_proba(string)
-    print result[0][1]
-else:
-    print 0
 
 
 def nb_train():
+    '''
+    READ FILE, TRANSFORM TRAINING DATA INTO TF-IDF
+    '''
+    report_df = pd.read_csv('data/final_training_set.csv')
+    X = np.array(report_df['REPORT'])
+    y = np.array(report_df['CATEGORY'])
     # Pickle no 2: tfidf_vectorizer
     tfidf_vectorizer = None
     try:
-        with open('../budi_ml/feedback_nlp/tfidf_vectorizer.pickle', 'rb') as f:
+        with open('tfidf_vectorizer.pickle', 'rb') as f:
             # print 'tfidf_vectorizer is already there, just load it...'
-            clf = pickle.load(f)[0]
+            tfidf_vectorizer = pickle.load(f)[0]
     except:
         pass
 
     if not tfidf_vectorizer:
-        '''
-        READ FILE, TRANSFORM TRAINING DATA INTO TF-IDF
-        '''
-        report_df = pd.read_csv(
-            '../budi_ml/feedback_nlp/data/final_training_set.csv')
-        X = np.array(report_df['REPORT'])
-        y = np.array(report_df['CATEGORY'])
         tfidf_vectorizer = TfidfVectorizer(
             tokenizer=normalize, stop_words='english')
-        with open('../budi_ml/feedback_nlp/tfidf_vectorizer.pickle', 'wb') as f:
+        with open('tfidf_vectorizer.pickle', 'wb') as f:
             pickle.dump([tfidf_vectorizer], f)
 
     X = tfidf_vectorizer.fit_transform(X)
@@ -140,7 +69,7 @@ def nb_train():
     # Pickle no 3: Naive Bayes Classifier
     nb_clf = None
     try:
-        with open('../budi_ml/feedback_nlp/nb_clf.pickle', 'rb') as f:
+        with open('nb_clf.pickle', 'rb') as f:
             # print 'nb_clf, just load it...'
             nb_clf = pickle.load(f)[0]
     except:
@@ -149,14 +78,18 @@ def nb_train():
     if not nb_clf:
         # print 'Training NB classifier using the trained tfidf_vectorizer '
         nb_clf = MultinomialNB().fit(X, y)
-        with open('../budi_ml/feedback_nlp/nb_clf.pickle', 'wb') as f:
+        with open('nb_clf.pickle', 'wb') as f:
             pickle.dump([nb_clf], f)
     return tfidf_vectorizer, nb_clf
 
 
 def main():
     # Ali, just see this section on how to use the models
-    report = sys.argv[1]
+    try:
+        report = sys.argv[1]
+    except IndexError:
+        raise Exception("Please input report with parantheses surrounding it.")
+
     # First pipeline
     gibberish = determine_gibberish(report)
     if not gibberish:
