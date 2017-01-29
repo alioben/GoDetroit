@@ -36,7 +36,7 @@ def determine_gibberish(sentence):
         Gibberish Classifier
     '''
     # Pickle no 1: gibberish classifier
-    with open('gib_model.pickle', 'rb') as f:
+    with open('../budi_ml/feedback_nlp/gib_model.pickle', 'rb') as f:
         gibberish_clf = pickle.load(f)[0]
     gibberish_threshold = gibberish_clf['thresh']
     return not gib_detect_train.avg_transition_prob(sentence, gibberish_clf['mat']) > gibberish_threshold
