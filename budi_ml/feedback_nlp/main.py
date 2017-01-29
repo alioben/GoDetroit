@@ -46,13 +46,13 @@ def nb_train():
     '''
     READ FILE, TRANSFORM TRAINING DATA INTO TF-IDF
     '''
-    report_df = pd.read_csv('data/final_training_set.csv')
+    report_df = pd.read_csv('../budi_ml/feedback_nlp/data/final_training_set.csv')
     X = np.array(report_df['REPORT'])
     y = np.array(report_df['CATEGORY'])
     # Pickle no 2: tfidf_vectorizer
     tfidf_vectorizer = None
     try:
-        with open('tfidf_vectorizer.pickle', 'rb') as f:
+        with open('../budi_ml/feedback_nlp/tfidf_vectorizer.pickle', 'rb') as f:
             # print 'tfidf_vectorizer is already there, just load it...'
             tfidf_vectorizer = pickle.load(f)[0]
     except:
@@ -61,7 +61,7 @@ def nb_train():
     if not tfidf_vectorizer:
         tfidf_vectorizer = TfidfVectorizer(
             tokenizer=normalize, stop_words='english')
-        with open('tfidf_vectorizer.pickle', 'wb') as f:
+        with open('../budi_ml/feedback_nlp/tfidf_vectorizer.pickle', 'wb') as f:
             pickle.dump([tfidf_vectorizer], f)
 
     X = tfidf_vectorizer.fit_transform(X)
@@ -69,7 +69,7 @@ def nb_train():
     # Pickle no 3: Naive Bayes Classifier
     nb_clf = None
     try:
-        with open('nb_clf.pickle', 'rb') as f:
+        with open('../budi_ml/feedback_nlp/nb_clf.pickle', 'rb') as f:
             # print 'nb_clf, just load it...'
             nb_clf = pickle.load(f)[0]
     except:
@@ -78,7 +78,7 @@ def nb_train():
     if not nb_clf:
         # print 'Training NB classifier using the trained tfidf_vectorizer '
         nb_clf = MultinomialNB().fit(X, y)
-        with open('nb_clf.pickle', 'wb') as f:
+        with open('../budi_ml/feedback_nlp/nb_clf.pickle', 'wb') as f:
             pickle.dump([nb_clf], f)
     return tfidf_vectorizer, nb_clf
 
