@@ -87,6 +87,7 @@ def main():
     # Ali, just see this section on how to use the models
     try:
         report = sys.argv[1]
+        print report
     except IndexError:
         raise Exception("Please input report with parantheses surrounding it.")
 

@@ -29,3 +29,16 @@ Lastly, is the Watch Me tab which allows the user to share his/her location with
 
 - `/api/feedback`
 	- Expects to recieve `JSON` in the form: `{'text': 'Something that you wanted the server to parse'}` and will return the output of this text run through the FeedBack NLP algorithm.
+
+- `/publish: {lat, lon, alert}`
+    - Publish an alert at the specified position
+
+- `/get: {lat, lon}`
+    - Fetch the alerts nearby the specified (lat,lon) location
+
+- `/score: {id}`
+    - Thumbs up to the alert with specified id
+
+- `/danger: {lat, lon, type}`
+    - type = "a", "p"
+    - Returns the danger according to authorities (type == a) or to people (type == p) next to the specified lat,lon location
