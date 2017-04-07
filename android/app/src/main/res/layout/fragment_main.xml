@@ -1,0 +1,121 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        tools:context="acb.godetroit.notsafe.godetroit.Views.FragmentMain">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Enter a Destination and choose your means of transportation to get started on your trip."
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp"
+        android:paddingTop="20dp"
+        android:textColor="#999"
+        android:gravity="center"/>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="20dp"
+            android:layout_alignParentTop="true">
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+                <EditText
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/from"
+                    android:focusable="false"
+                    android:hint="From"
+                    android:layout_weight="0.5"/>
+                <CheckBox
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/checkPosition"
+                    android:text="My Position"/>
+            </LinearLayout>
+
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/to"
+                android:focusable="false"
+                android:hint="To"/>
+        </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginBottom="5dp"
+                android:layout_marginTop="15dp">
+
+                <ImageButton
+                    android:layout_width="0dp"
+                    android:layout_height="150dp"
+                    android:id="@+id/findPathDrive"
+                    android:background="@drawable/background_car_button"
+                    android:src="@drawable/car"
+                    android:adjustViewBounds="true"
+                    android:text="Find Path"
+                    android:layout_weight="0.5"
+                    android:scaleType="center"
+                    android:paddingTop="7dp"
+                    android:paddingBottom="7dp"
+                    android:layout_marginRight="5dp"/>
+
+                <ImageButton
+                    android:layout_width="0dp"
+                    android:layout_height="150dp"
+                    android:id="@+id/findPathTransit"
+                    android:background="@drawable/background_bus_button"
+                    android:adjustViewBounds="true"
+                    android:text="Find Path"
+                    android:src="@drawable/bus"
+                    android:layout_weight="0.5"
+                    android:scaleType="center"
+                    android:paddingTop="7dp"
+                    android:paddingBottom="7dp"/>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_weight="0.5">
+
+                <ImageButton
+                    android:layout_width="0dp"
+                    android:layout_height="150dp"
+                    android:id="@+id/findPathWalk"
+                    android:background="@drawable/background_walk_button"
+                    android:adjustViewBounds="true"
+                    android:src="@drawable/walk"
+                    android:text="Find Path"
+                    android:layout_weight="0.5"
+                    android:layout_gravity="left"
+                    android:scaleType="center"
+                    android:paddingTop="7dp"
+                    android:paddingBottom="7dp"
+                    android:layout_marginRight="5dp"
+                    />
+
+                <ImageButton
+                    android:layout_width="0dp"
+                    android:layout_height="150dp"
+                    android:background="@drawable/background_bike_button"
+                    android:adjustViewBounds="true"
+                    android:id="@+id/findPathBike"
+                    android:text="Find Path"
+                    android:src="@drawable/bike"
+                    android:layout_weight="0.5"
+                    android:scaleType="center"
+                    android:paddingTop="7dp"
+                    android:paddingBottom="7dp"/>
+
+            </LinearLayout>
+
+</LinearLayout>

@@ -1,0 +1,15 @@
+<resources>
+    <string name="app_name">GoDetroit</string>
+    <string name="title_activity_watch">WatchActivity</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="title_activity_main">GoDetroit</string>
+    <string name="action_settings">Settings</string>
+    <string name="alert_hint">Type an alert...</string>
+    <string name="section_format">Hello World from section: %1$d</string>
+    <string name="check_connection">Please make sure the application is connected to internet.</string>
+    <string name="guide_main">Enter a Destination and choose your means of transportation to get started on your trip!</string>
+    <string name="guide_twitter">Vote on an alert to verify it\'s authenticity, or write a new report to share to others.</string>
+    <string name="guide_contact">Select a contact to watch you on your way.</string>
+</resources>
