@@ -17,7 +17,7 @@ jsonpointer==1.9
 language-selector==0.1
 MarkupSafe==0.23
 nltk==3.2.2
-numpy==1.12.0
+numpy==1.21.0
 oauthlib==1.0.3
 packaging==16.8
 pandas==0.19.2
